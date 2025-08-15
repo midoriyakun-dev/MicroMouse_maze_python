@@ -27,7 +27,7 @@ def RandomMaze():
                 possible_ends.append((i, j))
     if possible_ends:
         end = random.choice(possible_ends)                      #Check how random class works or we need to create our own random function
-        maze[end[0]][end[1]] = 'E'
+        maze[end[0]][end[1]] = 'E'                              #Make it more random HEHEHE
         
 
     else:
@@ -35,8 +35,18 @@ def RandomMaze():
     
     print(f"Start: {start}")       # No need to print start point, but keeping it for reference 
 
-    #Print the generated maze
+
+    # Print the generated maze
     print_maze(maze)
+
+    # Ask user if they want to save the maze
+    save = input("Save this maze to file? Do yo like it for further use? (y/n): ").strip().lower()
+    if save == 'y':
+        with open("saved_mazes.txt", "a") as f:
+            for row in maze:
+                f.write(''.join(row) + '\n')
+            f.write('\n')  # Separate mazes with a blank line
+        print("Maze saved to saved_mazes.txt.")
 
 
 def generate_maze(size):

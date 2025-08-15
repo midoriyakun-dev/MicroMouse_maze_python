@@ -1,0 +1,187 @@
+# Common Python Coding Conventions and Idioms
+
+1. Use _ as a throwaway variable in loops when the value is not needed:
+   for _ in range(10):
+       ...
+
+2. Use __name__ == "__main__" to allow or prevent parts of code from being run when the modules are imported:
+   if __name__ == "__main__":
+       ...
+
+3. Use with statement for resource management (context managers):
+   with open('file.txt') as f:
+       ...
+
+4. Use enumerate() to get index and value in a loop:
+   for i, value in enumerate(my_list):
+       ...
+
+5. Use zip() to loop over multiple iterables at once:
+   for a, b in zip(list1, list2):
+       ...
+
+6. Use list comprehensions for concise list creation:
+   squares = [x*x for x in range(10)]
+
+7. Use dict.get(key, default) to avoid KeyError:
+   value = my_dict.get('key', 0)
+
+8. Use unpacking for swapping values:
+   a, b = b, a
+
+9. Use *args and **kwargs for variable number of arguments in functions:
+   def func(*args, **kwargs):
+       ...
+
+10. Use f-strings for formatted strings (Python 3.6+):
+    name = 'Alice'
+    print(f'Hello, {name}!')
+
+11. Use _ for unused values in unpacking:
+    a, _, b = (1, 2, 3)
+
+12. Use any() and all() for concise checks:
+    if any(x > 0 for x in my_list): ...
+    if all(x > 0 for x in my_list): ...
+
+13. Use try/except for error handling:
+    try:
+        ...
+    except Exception as e:
+        ...
+
+14. Use is not None to check for None:
+    if x is not None:
+        ...
+
+15. Use pass for empty blocks:
+    def func():
+        pass
+
+16. Use _ as a translation function in i18n (by convention):
+    _('Translate this string')
+
+17. Use __init__.py to mark directories on disk as Python package directories.
+
+18. Use __str__ and __repr__ for string representations of objects.
+
+19. Use property decorators for getters/setters:
+    @property
+    def x(self):
+        ...
+
+20. Use type hints for function signatures (Python 3.5+):
+    def add(a: int, b: int) -> int:
+        ...
+
+# This is not an exhaustive list, but covers many common Python idioms and conventions.
+#
+# --- More Python Conventions, Shortcuts, and Cheat Sheet ---
+
+# Additional Conventions & Idioms
+21. Use __slots__ in classes to save memory when many instances are created:
+    class Point:
+        __slots__ = ['x', 'y']
+
+22. Use @staticmethod and @classmethod decorators for static and class methods:
+    @staticmethod
+    def foo(): ...
+    @classmethod
+    def bar(cls): ...
+
+23. Use contextlib for custom context managers:
+    from contextlib import contextmanager
+    @contextmanager
+    def my_cm():
+        ...
+
+24. Use itertools for advanced iteration tools:
+    import itertools
+    for pair in itertools.combinations([1,2,3], 2): ...
+
+25. Use collections for specialized data structures:
+    from collections import defaultdict, Counter, deque, namedtuple
+
+26. Use __all__ in modules to control what is imported with *
+    __all__ = ['foo', 'bar']
+
+27. Use assert for debugging and tests:
+    assert x > 0, "x must be positive"
+
+28. Use logging instead of print for debug/info/error output:
+    import logging
+    logging.info('message')
+
+29. Use enumerate with a start index:
+    for i, v in enumerate(mylist, 1): ...
+
+30. Use map, filter, reduce for functional programming:
+    list(map(str, [1,2,3]))
+    list(filter(lambda x: x>0, mylist))
+
+# Python Shortcuts & Cheat Sheet
+
+# List comprehensions:
+evens = [x for x in range(20) if x % 2 == 0]
+
+# Dictionary comprehensions:
+squares = {x: x*x for x in range(5)}
+
+# Set comprehensions:
+unique = {x for x in [1,2,2,3]}
+
+# Lambda functions:
+add = lambda a, b: a + b
+
+# Ternary operator:
+result = 'yes' if x > 0 else 'no'
+
+# Unpacking:
+a, b, *rest = [1,2,3,4,5]
+
+# Slicing:
+sub = mylist[1:4]
+rev = mylist[::-1]
+
+# String formatting:
+f"Value: {x:.2f}"
+"Value: %d" % x
+"Value: {}".format(x)
+
+# Joining and splitting strings:
+"-".join(['a','b','c'])
+"a-b-c".split('-')
+
+# Reading a file:
+with open('file.txt') as f:
+    data = f.read()
+
+# Writing to a file:
+with open('file.txt', 'w') as f:
+    f.write('hello')
+
+# List all files in a directory:
+import os
+os.listdir('.')
+
+# Get current time:
+import time
+now = time.time()
+
+# List all attributes/methods of an object:
+dir(obj)
+
+# Get help on a function/module:
+help(len)
+
+# Virtual environment (venv):
+python3 -m venv venv
+source venv/bin/activate
+
+# Install packages:
+pip install package_name
+
+# Run a Python script:
+python myscript.py
+
+# --- End of Cheat Sheet ---

@@ -1,7 +1,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Visualize the maze with optional depth map overlay
+# Function to load mazes from saved_mazes.txt
+def load_saved_mazes(filename="saved_mazes.txt"):
+    with open(filename, "r") as f:
+        raw = f.read().strip()
+    maze_blocks = raw.split('\n\n')  # Each maze is separated by a blank line
+    mazes = []
+    for block in maze_blocks:
+        rows = block.strip().split('\n')
+        maze = [list(row) for row in rows]
+        mazes.append(maze)
+    return mazes
 
 def visualize_maze(maze, depth_map=None):
     """
@@ -41,3 +51,26 @@ def visualize_maze(maze, depth_map=None):
 #     [0, 0, 0, 0]
 # ]
 # visualize_maze(maze, depth_map)
+
+# Function to let user pick a maze to play
+def pick_maze(mazes):
+    print("Saved Mazes:")
+    for idx, maze in enumerate(mazes):
+        print(f"Maze #{idx+1}:")
+        for row in maze:
+            print(''.join(row))
+        print()
+    while True:
+        try:
+            choice = int(input(f"Enter the maze number to play (1-{len(mazes)}): "))
+            if 1 <= choice <= len(mazes):
+                return mazes[choice-1]
+            else:
+                print("Invalid choice. Try again.")
+        except ValueError:
+            print("Please enter a valid integer.")
+
+
+
+# Visualize the maze with optional depth map overlay
+
